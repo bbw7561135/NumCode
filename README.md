@@ -1,4 +1,4 @@
-# Numerical Codes Written By Prof. Xu in Tsinghua Univ.
+# Numerical Codes Written by Prof. Xu in Tsinghua Univ.
 ### 徐士良常用数值程序+OpenMP<br>
 
 
