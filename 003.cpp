@@ -67,7 +67,7 @@ void PolyMul(double* p, int m, double* q , int n, double* s, int k) //多项式�
     {
         s[i]=0.0;
     }
-//#pragma omp parallel for reduction(+:s[:8]) reduction for array in OpenMP 4.5
+//#pragma omp parallel for reduction(+:s[:n]) reduction for array in OpenMP 4.5
 #pragma omp parallel for
     for(i=0;i<m;i++)
         for(int j=0;j<n;j++)
