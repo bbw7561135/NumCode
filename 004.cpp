@@ -310,3 +310,63 @@ int main()
 //
 //Using pointer to an array of points.
 //0x6dfec0: 1112.3
+
+
+
+#include <iostream>
+
+using namespace std;
+
+
+
+const double* f1(const double ar[], int n) // const double [] const double * is also OK
+{
+    return ar;
+}
+
+const double* f2(const double* ar, int)
+{
+    return ar+1; //1 is 8 byte
+}
+
+const double* f3(const double ar[], int)
+{
+    return ar+2;
+}
+//the prototype of f1 f2 f3 are the same
+///////////////////////////////////////
+
+int main()
+{
+    //typedef 为变量创建别名 减少输入量 当代码更简洁
+    //typedef相比预处理#define更有优势
+    //#define Float_Pointer float *
+    //Float_Point a,b
+    //系统会把a看成 float*类型 而b是float类型 而我们要的是ab都是float*类型
+    double av[3] = {66.0,77.0,88.0};
+    typedef short st;//short = st
+    typedef const double*(*pf_fun)(const double*, int);//pf_fun现在就是整个复杂表达式的别名
+    //pf_fun表示函数指针
+    st a = 5;
+    cout << "a is " << a << endl;
+    pf_fun p1 = f1;//p1是函数指针 所以应该把函数地址赋给它 而函数名字就是函数地址
+    cout << (*p1)(av,3) << ": " << *(*p1)(av,3) << endl;
+    //(*p1)(av,3)=f1(av,3) 而f1的返回值是指向const double的指针 const的意思是指针不能改变它指向的值
+    //所以*(*p1)(av,3) 是取得这个值
+    pf_fun pa[3] = {f1,f2,f3};
+    for(int i=0;i<3;i++)
+    {
+        cout<<pa[i](av,3)<< ": " << *pa[i](av,3) << endl;
+        cout << (*pa[i])(av,3) << ": " << *(*pa[i])(av,3) << endl;
+    }
+    return 0;
+}
+
+//a is 5
+//0x6dfec8: 66
+//0x6dfec8: 66
+//0x6dfec8: 66
+//0x6dfed0: 77
+//0x6dfed0: 77
+//0x6dfed8: 88
+//0x6dfed8: 88
