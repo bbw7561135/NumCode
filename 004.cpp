@@ -108,3 +108,28 @@ int main()
 //*stacks = 3, *(stacks+1) = 2
 //24 = size of wages array.
 //4 = size of pw pointer.
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+
+    short tell[3];
+    cout << tell << endl;//the address of the first element
+    cout << &tell << endl;//the addresses of all
+    int age = 39;
+    const int* pt = &age; //pt指向一个常量 意思不是说age本身是常量
+    //而是无法通过pt改变这个量 比如 *pt = *pt + 1会报错
+    //这样可以防止指针无意中修改了age值 但实际上age本身不是常量 可以通过
+    //age = age + 1 来改变
+    const float g_earth = 9.80;
+    const float* pe = &g_earth; //这是OK的 将const变量的地址赋给const指针 即不能用g_earth来改变值
+    //用pe也不能改变
+    //但是不能将congst的地址赋给非const指针
+    // const float *gmoom=1.63；
+    //float* pm = &gmoom 因为如果这样可行 那么pm可以改gmoom的值 与gmoom本身const属性矛盾
+    return 0;
+}
