@@ -418,3 +418,198 @@ int main()
 //before swap: y = 12
 //after swap: x = 12
 //after swap: y = 5
+
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Stock
+{
+private:
+    string company;
+    long shares;
+    double share_val;
+    double total_val;
+    void set_tot()
+    {
+        total_val = share_val * shares;
+    }
+public:
+    Stock();//默认构造函数
+    Stock(const string &co, long n=0, double pr=0.0);
+    ~Stock();//析构函数
+    void acquire(const string &co, long n, double pr);//co指向一个常字符串 意思是指针co不能去改变这个字符串
+    //而不是字符串本身不可以改变 只是不能透过指针co改变 n是持股数量 pr是价格
+    void buy(long num, double price);
+    void sell(long num, double price);
+    void update(double price);
+    void show() const;
+    //不修改对象的成员函数 应该声明为const
+    //假如const Stock land = Stock("RM")
+    //land.show()将会报错 因为无法确保show不改对象 所以还是加个const稳妥
+    const Stock & topval(const Stock & s) const;
+    //参数是Stock的引用 并且也不改变所指向Stock的值 返回值也是如此 并且函数本身也确保不修改对象-via 最后一个const
+}; //注意这里有个分号
+
+
+
+Stock::Stock()//default constrctor
+{
+    cout << "default constructor called." << endl;
+    company = "No name";
+    shares = 0;
+    share_val = 0.0;
+    total_val = 0.0;
+}
+
+Stock::Stock(const string& co, long n, double pr)
+{ //实际上就是取代了acquire的功能
+    cout << "Constructor using " << co << "called." <<endl;
+    company = co;
+    if(n<0)
+    {
+        cout << "Num of shares can not be negative ;"
+             << company << "shares set to 0." << endl;
+        shares = 0;
+    }
+    else
+        shares = n;
+
+    share_val = pr;
+    set_tot();
+}
+
+Stock::~Stock()
+{
+    cout << "bye, " << company << endl;
+}
+
+void Stock::acquire(const string& co, long n, double pr)
+{
+    company = co;
+    if(n<0)
+    {
+        cout << "Num of shares can not be negative ;"
+             << company << "shares set to 0." << endl;
+        shares = 0;
+    }
+    else
+        shares = n;
+
+    share_val = pr;
+    set_tot();
+}
+
+void Stock::buy(long num, double price)
+{
+    if(num<0)
+    {
+        cout << "Num of shares purchased can not be nagative. " << endl;
+    }
+    else
+    {
+        shares += num;
+        share_val = price;
+        set_tot();
+    }
+}
+
+
+void Stock::sell(long num, double price)
+{
+    if(num<0)
+    {
+        cout << "Num of shares sold can not be nagative. " << endl;
+    }
+    else  if(num>shares)
+    {
+        cout << "You can not sell more than you have." << endl;
+    }
+    else
+    {
+        shares -= num;
+        share_val = price;
+        set_tot();
+    }
+
+}
+
+
+void Stock::update(double price)
+{
+    share_val = price;
+    set_tot();
+}
+
+
+void Stock::show() const
+{
+    cout << "Company: " << company << endl;
+    cout << "Shares: " << shares << endl;
+    cout << "Share Price: " << share_val << endl;
+    cout << "Total Worth: " << total_val << endl;
+}
+
+
+const Stock & Stock::topval(const Stock& s) const
+{
+    if(s.total_val > total_val)
+        return s; //s是Stock实例的别名 可以直接用
+    else
+        return *this;//this是stock的指针 所以要加*
+}
+
+int main()
+{
+    Stock Man_City;
+    Man_City.acquire("Manchester City",200,50);
+    Man_City.show();
+    Man_City.buy(300,25);
+    Man_City.show();
+    Man_City.sell(500,80);
+    Man_City.show();
+
+    Stock Bar("Barcelona",500,90);
+    Bar.show();
+
+    Stock RM = Stock("Madrid",100,5);
+    RM.show();
+
+    Stock top = RM.topval(Bar);
+    top.show();
+
+    return 0;
+}
+
+//
+//Company: Manchester City
+//Shares: 500
+//Share Price: 25
+//Total Worth: 12500
+//Company: Manchester City
+//Shares: 0
+//Share Price: 80
+//Total Worth: 0
+//Constructor using Barcelonacalled.
+//Company: Barcelona
+//Shares: 500
+//Share Price: 90
+//Total Worth: 45000
+//Constructor using Madridcalled.
+//Company: Madrid
+//Shares: 100
+//Share Price: 5
+//Total Worth: 500
+//Company: Barcelona
+//Shares: 500
+//Share Price: 90
+//Total Worth: 45000
+//bye, Barcelona
+//bye, Madrid
+//bye, Barcelona
+//bye, Manchester City
+
+
+
