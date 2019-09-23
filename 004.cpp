@@ -133,3 +133,45 @@ int main()
     //float* pm = &gmoom 因为如果这样可行 那么pm可以改gmoom的值 与gmoom本身const属性矛盾
     return 0;
 }
+
+
+#include <iostream>
+using namespace std;
+
+double betsy(int lns)
+{
+    return 0.05 * lns;
+}
+
+double pam(int lns)
+{
+    return 0.03*lns+0.0004*lns*lns;
+}
+
+void estimate(int lines, double (*pf)(int))
+{
+    cout << lines << "lines will take ";
+    cout << (*pf)(lines) << " hours." <<endl;
+}
+
+int main()
+{
+    //函数指针
+    int code = 100;
+    cout << "Betsy's estimate: " << endl;
+    estimate(code,betsy);
+    cout << "Pam's estimate: " << endl;
+    estimate(code,pam);
+    //double (*pf)(int) = pf pointer to a function which return double while require int
+    //double *pf(int) = pf(int) is a function which return a double* pointer
+    //函数名本身就是函数的地址 process(think)=process函数在其内部调用think函数
+    //thought(think()) thought函数先调用think函数获得返回值 用这个返回值作为输入参数
+    return 0;
+}
+
+
+//Betsy's estimate:
+//100lines will take 5 hours.
+//Pam's estimate:
+//100lines will take 7 hours.
+
