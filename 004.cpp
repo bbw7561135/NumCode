@@ -687,4 +687,148 @@ int main()
 }
 
 
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+
+
+struct Review //图书名称和排名
+{
+    string title;
+    int ratings;
+};
+
+//录入图书
+bool FillReview(Review & rr)
+{
+    cout << "Enter book name (quit to quit): ";
+    getline(cin,rr.title);
+    if(rr.title=="quit")
+        return false;
+    cout << "Enter book ratings:";
+    cin >> rr.ratings;
+    if(!cin)
+        return false;
+    //get rid of rest of input line
+    while(cin.get()!='\n')
+        continue;
+    return true;
+}
+
+
+void ShowReview(const Review & rr)
+{
+    cout << rr.ratings << '\t' <<rr.title <<endl;
+}
+
+
+int main()
+{
+    vector<Review> books;
+    Review temp;
+    while(FillReview(temp))
+        books.push_back(temp); //把temp内容加入books的末尾
+    int num = books.size();
+    if(num>0)
+    {
+        cout << "You enter the following: "<<endl;
+        cout << "Rating Books" << endl;
+        for(int i=0;i<num;i++)
+            ShowReview(books[i]);
+        cout << "Show by iterator" << endl;
+        vector<Review>::iterator pr; //类似python的迭代器
+        for(pr=books.begin();pr!=books.end();pr++)
+            ShowReview(*pr); //貌似是指针pr
+
+    vector<Review> oldlist(books); //copy constrctor used
+    if(num>3)
+    {
+        //remove two items
+        books.erase(books.begin()+1,books.begin()+3); //delete books.begin()+1 and +2  3 is not included i.e.[)
+        cout << "after erase: " << endl;
+        for(pr=books.begin();pr!=books.end();pr++)
+            ShowReview(*pr); //貌似是指针pr
+        cout << "insert a book" << endl;
+        //insert a book from oldlist
+        books.insert(books.begin(),oldlist.begin()+1,oldlist.begin()+2);//将oldlist的第二本书插入到books的开始位置
+        //前面这个是要插入的位置 后面是插入数据的来源区间 满足[) 也就是将oldlist.beging+1插入到books.begin的位置
+        //插入后这本书便成为第一本
+        cout << "after insertion: " << endl;
+        for(pr=books.begin();pr!=books.end();pr++)
+            ShowReview(*pr); //貌似是指针pr
+    }
+    books.swap(oldlist); //交换两个容器的内容
+    cout << "swap with oldlist." <<endl;
+    for(pr=books.begin();pr!=books.end();pr++)
+        ShowReview(*pr); //貌似是指针pr
+    }
+    else
+        cout << "No books" << endl;
+    return 0;
+
+}
+
+
+//Enter book name (quit to quit): amao
+//Enter book ratings:1
+//Enter book name (quit to quit): adong
+//Enter book ratings:2
+//Enter book name (quit to quit): agou
+//Enter book ratings:3
+//Enter book name (quit to quit): lingling
+//Enter book ratings:4
+//Enter book name (quit to quit): xinge
+//Enter book ratings:5
+//Enter book name (quit to quit): quit
+//You enter the following:
+//Rating Books
+//1       amao
+//2       adong
+//3       agou
+//4       lingling
+//5       xinge
+//Show by iterator
+//1       amao
+//2       adong
+//3       agou
+//4       lingling
+//5       xinge
+//after erase:
+//1       amao
+//4       lingling
+//5       xinge
+//insert a book
+//after insertion:
+//2       adong
+//1       amao
+//4       lingling
+//5       xinge
+//swap with oldlist.
+//1       amao
+//2       adong
+//3       agou
+//4       lingling
+//5       xinge
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
