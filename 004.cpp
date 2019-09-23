@@ -71,6 +71,8 @@ int main()
     double* pw = wages; //name of an array = address
     short* ps = &stacks[0]; //the first element's address is also the address of an array
     //stacks = &stacks[0] = address of the first element of array
+    //数组名字被解释为第一个元素的地址 但对数组名字用取地址符& 得到的值虽然和第一个地址相同 但它代表的是整个数组的地址 只不过首地址是
+    //第一个元素地址 
     cout << "pw = " << pw << ", *pw = " << *pw << endl;
     pw = pw + 1;
     cout << " add 1 to the pw point." << endl;
