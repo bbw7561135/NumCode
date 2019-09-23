@@ -70,7 +70,7 @@ int main()
     //Here are two ways to get the address of an array
     double* pw = wages; //name of an array = address
     short* ps = &stacks[0]; //the first element's address is also the address of an array
-
+    //stacks = &stacks[0] = address of the first element of array
     cout << "pw = " << pw << ", *pw = " << *pw << endl;
     pw = pw + 1;
     cout << " add 1 to the pw point." << endl;
