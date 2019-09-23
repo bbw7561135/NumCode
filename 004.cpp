@@ -654,3 +654,37 @@ int main()
 }
 
 
+
+#include <iostream>
+#include <vector>
+#include <valarray>
+using namespace std;
+
+
+
+
+
+
+
+int main()
+{
+
+    double gpa[5]={3.3,3.5,3.3,3.7,3.6};
+    valarray<double> v1; //an array of double //size 0
+    valarray<int> v2(8); //an array of int with 8 elements
+    valarray<int> v3(10,8); //an array of int with 8 elements //each set 10
+    valarray<double> v4(gpa,4); //an array of 4 double elements
+    //use gpa first 4 elements to initialize it
+    cout<<v4.max()<<endl;
+    cout<<v4.min()<<endl;
+
+    vector<int> ratings(5); //动态数组
+    for(int i=0;i<5;i++)
+    {
+        ratings[i] = i*3;
+    }
+    return 0;
+}
+
+
+
