@@ -386,7 +386,7 @@ void Swap(DataType &a, DataType &b)
     b = temp;
 }
 
-
+//Datatype那么赋值这些操作就行不通
 
 int main()
 {
