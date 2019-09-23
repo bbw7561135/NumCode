@@ -613,3 +613,44 @@ int main()
 
 
 
+#include <iostream>
+
+using namespace std;
+
+
+class String
+{
+private:
+    char* str; //指向char的指针
+    int len;//len of string
+    static int num_strings;//num of total strings
+    //numstrings声明为静态变量 不能在类声明中初始化该变量 也就是不能在这里初始化它
+    //因为声明只是描述了如何分配内存 但还没有实际分配 除非限定为const
+    //静态类成员是单独存在的 不是对象的组成部分 注意下面初始化时没有使用static
+    //但是可以被实例访问
+    static const int CINLIM = 80; //cin input limt
+public:
+    //构造函数和其他方法
+    String(const char* s);//constructor
+    String();//default constructor
+    String(const String &);//复制构造函数 参数为引用
+    //就是把一个string对象赋给另外一个作为其初始化数据
+    ~String();//destructor
+    int length() const {return len;}
+    //重载运算符
+    String & operator=(const String &);
+    String & operator=(const char *);
+    char & operator[](int i);
+    const char & operator[](int i) const;
+};
+
+
+
+
+int main()
+{
+   //字符串平时用不到 没研究完
+    return 0;
+}
+
+
