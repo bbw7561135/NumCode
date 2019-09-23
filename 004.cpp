@@ -370,3 +370,51 @@ int main()
 //0x6dfed0: 77
 //0x6dfed8: 88
 //0x6dfed8: 88
+
+
+#include <iostream>
+
+using namespace std;
+
+//函数模板原型
+template <typename DataType>
+void Swap(DataType &a, DataType &b)
+{
+    DataType temp;
+    temp = a;
+    a = b;
+    b = temp;
+}
+
+
+
+int main()
+{
+    //函数模板
+    int i = 10;
+    int j = 20;
+    cout << "before swap: i = " << i << endl;
+    cout << "before swap: j = " << j << endl;
+    Swap(i,j);
+    cout << "after swap: i = " << i << endl;
+    cout << "after swap: j = " << j << endl;
+
+    double x = 5.0;
+    double y = 12.0;
+    cout << "before swap: x = " << x << endl;
+    cout << "before swap: y = " << y << endl;
+    Swap(x,y);
+    cout << "after swap: x = " << x << endl;
+    cout << "after swap: y = " << y << endl;
+    return 0;
+}
+
+
+//before swap: i = 10
+//before swap: j = 20
+//after swap: i = 20
+//after swap: j = 10
+//before swap: x = 5
+//before swap: y = 12
+//after swap: x = 12
+//after swap: y = 5
