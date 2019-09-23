@@ -175,3 +175,45 @@ int main()
 //Pam's estimate:
 //100lines will take 7 hours.
 
+
+#include <iostream>
+#include <vector>
+#include <array>
+using namespace std;
+
+
+
+int main()
+{
+    //模板类 vector 动态数组 new创建动态数组的替代品
+    //实际上 vector的确是使用new和delete管理内存 但内化了
+    //C++ 11新增array 比vector效率高 更接近原始数组
+
+    //C and original C++ array
+    double a1[4] = {1.2,2.4,3.6,4.8};
+
+    //C++98 STL
+    vector<double> a2(4);
+    a2[0] = 1.0/3.0;//no simple way to initialize
+    a2[1] = 1.0/5.0;//loop like original C array
+    a2[2] = 1.0/7.0;
+    a2[3] = 1.0/9.0;
+
+    //C++11
+    array<double,4> a3 = {3.14,2.72,1.62,1.41};
+    array<double,4> a4 = a3;
+
+    //use array notation
+    cout << "a1[2] = " << a1[2] << "at " << &a1[2] << endl;
+    cout << "a2[2] = " << a2[2] << "at " << &a2[2] << endl;
+    cout << "a3[2] = " << a3[2] << "at " << &a3[2] << endl;
+    cout << "a4[2] = " << a4[2] << "at " << &a4[2] << endl;
+    return 0;
+}
+
+
+//a1[2] = 3.6at 0x6efec8
+//a2[2] = 0.142857at 0x30538
+//a3[2] = 1.62at 0x6efe98
+//a4[2] = 1.62at 0x6efe78
+
