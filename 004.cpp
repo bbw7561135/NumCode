@@ -217,3 +217,96 @@ int main()
 //a3[2] = 1.62at 0x6efe98
 //a4[2] = 1.62at 0x6efe78
 
+
+
+#include <iostream>
+
+using namespace std;
+
+const double* f1(const double ar[], int n) // const double [] const double * is also OK
+{
+    return ar;
+}
+
+const double* f2(const double* ar, int)
+{
+    return ar+1; //1 is 8 byte
+}
+
+const double* f3(const double ar[], int)
+{
+    return ar+2;
+}
+//the prototype of f1 f2 f3 are the same
+///////////////////////////////////////
+
+int main()
+{
+    //函数指针高级版
+
+    double av[3]={1112.3,1542.6,2227.9};
+    //point to a function
+    const double* (*p1)(const double*, int) = f1;
+    //声明函数指针时候把函数原型中的函数名字替换为(*p)即可  函数指针是一个指针
+    //需要赋给它表示函数地址的变量 而函数名字本身(f1,f2,f3)就是表示其地址
+    auto p2 = f2; //C++11自动推断类型 p2和怕p1一样是函数指针
+    //auto注意点在收藏夹C&Fortran里面
+    //调用函数时候 (*pf)(5)等价于pf(5) 但前者更直观表达了代码正在使用函数指针！
+    cout << "using pointers to functions: " << endl;
+    cout << "Address Value : " << endl;
+    cout << (*p1)(av,3) << ": " << *(*p1)(av,3) << endl;
+    //(*p1)(av,3)=f1(av,3) 而f1的返回值是指向const double的指针 const的意思是指针不能改变它指向的值
+    //所以*(*p1)(av,3) 是取得这个值
+    cout << p2(av,3) << ": " << *p2(av,3) << endl;
+    //调用函数时候 (*pf)(5)等价于pf(5)
+
+    //函数指针数组 无法用auto来作为数组初始化
+    const double* (*pa[3])(const double*,int) = {f1,f2,f3};
+    //pa是指针数组 存了3个函数指针
+    //但可以用auto判断单个元素
+    auto pb = pa; //pa首元素赋给了pb pb指向f1 等价于pa
+    cout << "\nUsing an array of pointers to functions." << endl;
+    cout << "Address Value : " << endl;
+    for(int i=0;i<3;i++)
+    {
+        cout<<pa[i](av,3)<< ": " << *pa[i](av,3) << endl;
+        cout << (*pa[i])(av,3) << ": " << *(*pa[i])(av,3) << endl;
+    }
+
+    for(int i=0;i<3;i++)
+    {
+        cout<<pb[i](av,3)<< ": " << *pb[i](av,3) << endl;
+        cout << (*pb[i])(av,3) << ": " << *(*pb[i])(av,3) << endl;
+    }
+
+    //指向pa的指针
+    cout << "\nUsing pointer to an array of points." << endl;
+    auto pc = &pa;
+    cout << (*pc)[0](av,3) << ": " << *(*pc)[0](av,3) << endl;
+    //*pc=pa so (*pc)[0](av,3) = pa[0](av,3)
+    //*(*pc)[0](av,3) = *pa[i](av,3)
+    return 0;
+}
+
+//using pointers to functions:
+//Address Value :
+//0x6dfec0: 1112.3
+//0x6dfec8: 1542.6
+//
+//Using an array of pointers to functions.
+//Address Value :
+//0x6dfec0: 1112.3
+//0x6dfec0: 1112.3
+//0x6dfec8: 1542.6
+//0x6dfec8: 1542.6
+//0x6dfed0: 2227.9
+//0x6dfed0: 2227.9
+//0x6dfec0: 1112.3
+//0x6dfec0: 1112.3
+//0x6dfec8: 1542.6
+//0x6dfec8: 1542.6
+//0x6dfed0: 2227.9
+//0x6dfed0: 2227.9
+//
+//Using pointer to an array of points.
+//0x6dfec0: 1112.3
