@@ -52,3 +52,41 @@ int main()
     cout << p->sex << endl;
     return 0;
 }
+
+
+#include <iostream>
+using namespace std;
+
+
+void max_min(int a[], int n, int *max, int *min)
+{
+    int *p;
+    *max = *min = *a;//a is the array name also the first address of the 1st element
+    //so *a is the 1st element
+    for(p=a+1;p<a+n;p++)
+    {
+        if(*p>*max)
+            *max=*p;
+        else if (*p<*min)
+            *min=*p;
+        else
+            continue;
+    }
+}
+
+
+
+
+int main()
+{//指针与数组
+
+    int a[10] = {1,3,4,5,76,8,9,92,33,77};
+    //int * p;
+    //p = a; //equals to p=&a[0]
+    int max,min;
+    max_min(a,10,&max,&min);
+    cout << max << '\t' << min << endl;
+
+
+    return 0;
+}
