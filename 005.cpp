@@ -90,3 +90,43 @@ int main()
 
     return 0;
 }
+
+
+
+#include <iostream>
+using namespace std;
+
+int *findsame(int *pa, int *pb, int an, int bn)
+{
+    int *pta, *ptb;
+    pta = pa;
+    ptb = pb;
+    while(pta<pa+an && ptb<pb+bn)
+    {
+        if(*pta < *ptb)
+            pta++;
+        else if(*pta > *ptb)
+            ptb++;
+        else
+            return pta;//pta是局部变量指针 但是pta所指的是外部的变量 可以返回
+    }
+    return 0; //null pointer
+}
+
+
+
+
+
+int main()
+{//指针与数组
+
+    int *p;
+    int a[] = {1,2,3,4,5};
+    int b[] = {2,3,4,5,6};
+    p = findsame(a,b,sizeof(a)/sizeof(a[0]),sizeof(b)/sizeof(b[0]));
+    if(p)
+        cout << *p << endl;
+
+
+    return 0;
+}
