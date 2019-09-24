@@ -130,3 +130,34 @@ int main()
 
     return 0;
 }
+
+
+
+#include <iostream>
+using namespace std;
+
+float* searchstu(float(*p)[4], int n)
+{//*的优先级高于[] 所以float * p[4]表示一个数组p[4] 数组里面元素是float型指针
+    //而float (*p)[4]表示指针p指向一个有4个float元素的数组
+    //此时p+1 等于越过4个 float元素 see c++ primer plus 245-246
+    float *pt;
+    pt = *(p+n);//p+n指向第n个学生 包含四个数组 *(p+n)是首元素的地址
+    return pt;
+}
+
+
+
+int main()
+{//指针与数组
+
+    float score[][4] = {{60,32,43,65},{23,65,98,98},{34,67,98,35},{23,56,87,92}};
+    float *pp; //pp point to an float
+    int j=2;
+    pp = searchstu(score,j);
+    for(int i=0;i<4;i++)
+    {
+        cout << *(pp+i) << endl;
+    }
+
+    return 0;
+}
