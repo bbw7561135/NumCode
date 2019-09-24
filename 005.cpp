@@ -23,3 +23,32 @@ int main()
 
     return 0;
 }
+
+
+#include <iostream>
+using namespace std;
+
+
+struct student
+{
+    int num;
+    char name[20];
+    char sex;
+    int age;
+    float score;
+};
+
+int main()
+{//指向结构体的指针
+
+    struct student amao =
+    {
+        001,"Bao",'M',30,99 //"M" is not OK
+    };
+    struct student* p;
+    p = &amao;
+    cout << p->name << endl;
+    cout << p->age << endl;
+    cout << p->sex << endl;
+    return 0;
+}
