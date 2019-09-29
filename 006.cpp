@@ -166,3 +166,55 @@ int main()
 //zippo[2][1] = 3
 //*(*(zippo+2)+1) = 3
 
+
+
+#include <iostream>
+using namespace std;
+
+//指向二维数组的指针
+
+
+int main()
+{
+
+    int zippo[4][2] = {{2,4},{6,8},{1,3},{5,7}};
+    cout << "zippo = " << zippo << "zippo + 1 = " << zippo + 1 << endl;
+    cout << "zippo[0] = " << zippo[0] << "zippo[0] + 1 = " << zippo[0] + 1 << endl;
+    cout << "*zippo = " << *zippo << "*zippo + 1 = " << *zippo + 1 << endl;
+    cout << "zippo[0][0] = " << zippo[0][0] << endl;
+    cout << "*zippo[0] = " << *zippo[0] << endl;
+    cout << "**zippo = " << **zippo << endl;
+    cout << "zippo[2][1] = " << zippo[2][1] << endl;
+    cout << "*(*(zippo+2)+1) = " << *(*(zippo+2)+1) << endl;
+    int (*pz) [2];//different from int* pz[2] see page304
+    //pz == zippo
+    pz = zippo;
+    cout << "pz = " << pz << "pz + 1 = " << pz + 1 << endl;
+    cout << "pz[0] = " << pz[0] << "pz[0] + 1 = " << pz[0] + 1 << endl;
+    cout << "*pz = " << *pz << "*pz + 1 = " << *pz + 1 << endl;
+    cout << "pz[0][0] = " << pz[0][0] << endl;
+    cout << "*pz[0] = " << *pz[0] << endl;
+    cout << "**pz = " << **pz << endl;
+    cout << "pz[2][1] = " << pz[2][1] << endl;
+    cout << "*(*(pz+2)+1) = " << *(*(pz+2)+1) << endl;
+
+    return 0;
+}
+
+//zippo = 0x6dfecc zippo + 1 = 0x6dfed4
+//zippo[0] = 0x6dfecc zippo[0] + 1 = 0x6dfed0
+//*zippo = 0x6dfecc *zippo + 1 = 0x6dfed0
+//zippo[0][0] = 2
+//*zippo[0] = 2
+//**zippo = 2
+//zippo[2][1] = 3
+//*(*(zippo+2)+1) = 3
+//pz = 0x6dfecc pz + 1 = 0x6dfed4
+//pz[0] = 0x6dfecc pz[0] + 1 = 0x6dfed0
+//*pz = 0x6dfecc  *pz + 1 = 0x6dfed0
+//pz[0][0] = 2
+//*pz[0] = 2
+//**pz = 2
+//pz[2][1] = 3
+//*(*(pz+2)+1) = 3
+
