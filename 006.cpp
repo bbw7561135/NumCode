@@ -25,4 +25,33 @@ int main()
 
 
 
+#include <iostream>
+using namespace std;
+
+int sum(int ar[], int n) //(int* ar, int n) is also ok
+{ //ar[]能反映出传入的是一个数组
+    int i=0;
+    int total = 0;
+    for(i=0;i<n;i++)
+    {
+        total += ar[i]; //*(ar+i) is also ok
+    }
+    return total;
+}
+
+
+
+int main()
+{
+    int ans,m =10;
+    int days[m] = {1,2,3,4,5,6,7,8,9,10};
+
+    ans = sum(days,m);
+    cout << ans << endl;
+
+    return 0;
+}
+
+
+
 
