@@ -119,10 +119,13 @@ int main()
 //*p1++ *++p2 (*p3)++ 100200300
 //new *p1 *p2 *p3 200200301
 
+//指针和数组的关系在290-300
 //指针中const的应用在C primer plus 300页
 //const double * pc
 //double * const pc
 //const double * const pc 三者不同
+//指针和多维数组的关系在301
+
 
 
 
