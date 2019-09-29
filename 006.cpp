@@ -65,6 +65,9 @@ int sum(int* startAdd, int* endAdd) //(int* ar, int n) is also ok
     {
         total += *startAdd;
         startAdd++; //*(ar+i) is also ok
+        //++和*一样优先级 但是C语言满足从右往左结合
+        //所以上述等价于 total += *startAdd++
+        //意思是先把startAdd指向的值加到total上 在递增指针 注意理解 startAdd++ 和 ++startAdd的差别
     }
     return total;
 }
