@@ -18,7 +18,7 @@ int main()
     for(i=0;i<m;i++)
     {
         cout << "using *(days+i)" << *(days+i) << endl;
-    }
+    } //指针能表示数组 反正 数组也能表示指针 特别是在使用以数组为参数的函数时
 
     return 0;
 }
