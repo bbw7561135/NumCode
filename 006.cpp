@@ -127,5 +127,42 @@ int main()
 //指针和多维数组的关系在301
 
 
+#include <iostream>
+using namespace std;
 
+
+
+
+int main()
+{
+
+    int zippo[4][2] = {{2,4},{6,8},{1,3},{5,7}};
+    cout << "zippo = " << zippo << "zippo + 1 = " << zippo + 1 << endl;
+    //zippo指向一个含2个int的内存地址 +1就表示要跳过8个字节 这里是十六进制要注意
+    cout << "zippo[0] = " << zippo[0] << "zippo[0] + 1 = " << zippo[0] + 1 << endl;
+    //zippo[0]可以看作是一个普通的数组名字 比如ar
+    //所以zippo[0]本身就是ar[0]的地址 指向一个int的内存地址 +1表示要跳过4个字节
+    cout << "*zippo = " << *zippo << "*zippo + 1 = " << *zippo + 1 << endl;
+    //zippo的值是首元素的地址 而首元素是含两个int的数组 所以*zippo=zippo[0]
+    //*(zippo+1)=zippo[1]
+    cout << "zippo[0][0] = " << zippo[0][0] << endl;
+    //zippo[0][0]==*zippo[0]==**zippo
+    cout << "*zippo[0] = " << *zippo[0] << endl;
+    cout << "**zippo = " << **zippo << endl;
+    //zippo[2][1]==*(*(zippo+2)+1)
+    cout << "zippo[2][1] = " << zippo[2][1] << endl;
+    cout << "*(*(zippo+2)+1) = " << *(*(zippo+2)+1) << endl;
+
+    return 0;
+}
+
+
+//zippo = 0x6dfed0     zippo + 1 = 0x6dfed8
+//zippo[0] = 0x6dfed0  zippo[0] + 1 = 0x6dfed4
+//*zippo = 0x6dfed0    *zippo + 1 = 0x6dfed4
+//zippo[0][0] = 2
+//*zippo[0] = 2
+//**zippo = 2
+//zippo[2][1] = 3
+//*(*(zippo+2)+1) = 3
 
