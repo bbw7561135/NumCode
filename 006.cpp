@@ -152,7 +152,7 @@ int main()
     //zippo[2][1]==*(*(zippo+2)+1)
     cout << "zippo[2][1] = " << zippo[2][1] << endl;
     cout << "*(*(zippo+2)+1) = " << *(*(zippo+2)+1) << endl;
-
+    //303的图很实用 可以帮忙厘清上述关系
     return 0;
 }
 
