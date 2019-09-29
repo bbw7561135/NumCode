@@ -76,7 +76,8 @@ int main()
     int ans,m =10;
     int days[m] = {1,2,3,4,5,6,7,8,9,10};
 
-    ans = sum(days,days+m);
+    ans = sum(days,days+m); //days+m事实上指向10后面的一个位置 但是C允许这样的访问
+    //所以sum里面的循环条件是startAdd<endAdd
     cout << ans << endl;
 
     return 0;
