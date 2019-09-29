@@ -54,4 +54,34 @@ int main()
 
 
 
+#include <iostream>
+using namespace std;
+
+int sum(int* startAdd, int* endAdd) //(int* ar, int n) is also ok
+{
+
+    int total = 0;
+    while(startAdd<endAdd)
+    {
+        total += *startAdd;
+        startAdd++; //*(ar+i) is also ok
+    }
+    return total;
+}
+
+
+
+int main()
+{
+    int ans,m =10;
+    int days[m] = {1,2,3,4,5,6,7,8,9,10};
+
+    ans = sum(days,days+m);
+    cout << ans << endl;
+
+    return 0;
+}
+
+
+
 
