@@ -78,6 +78,7 @@ int main()
 
     ans = sum(days,days+m); //days+m事实上指向10后面的一个位置 但是C允许这样的访问
     //所以sum里面的循环条件是startAdd<endAdd
+    //虽然C保证了days+m有效 但对其值未作保证 所以程序不能访问该位置
     cout << ans << endl;
 
     return 0;
