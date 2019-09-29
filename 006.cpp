@@ -88,5 +88,34 @@ int main()
 }
 
 
+#include <iostream>
+using namespace std;
 
+
+
+
+int main()
+{
+
+    int data[2] = {100,200};
+    int moredata[2] = {300, 400};
+    int *p1, *p2, *p3;
+
+    p1 = data;
+    p2 = data;
+    p3 = moredata;
+
+    cout << "*p1 *p2 *p3 " << *p1 << *p2 << *p3 << endl;
+    cout << "*p1++ *++p2 (*p3)++ " << *p1++ << *++p2 << (*p3)++ << endl;
+    cout << "new *p1 *p2 *p3 " << *p1 << *p2 << *p3 << endl;
+    //*++p2的意思是 马上把p2指向下一个int地址 然后取值 此后p2就指向下一个地址 也就是200
+    //*p1++的意思是 先对p1求值 用完这次后p1指向下一个int地址 也就是200
+    //(*p3)++的意思是 对p3求值 然后把这个值用完后+1 p3指向的地址不变 但是值已经从300变为301
+
+    return 0;
+}
+
+//*p1 *p2 *p3 100100300
+//*p1++ *++p2 (*p3)++ 100200300
+//new *p1 *p2 *p3 200200301
 
