@@ -198,6 +198,7 @@ int main()
     cout << "pz[2][1] = " << pz[2][1] << endl;
     cout << "*(*(pz+2)+1) = " << *(*(pz+2)+1) << endl;
     //指针比较复杂 有时候容易搞混忘记 需要多翻 305指针的兼容性
+    //如果A是二维数组 那么A[i]就是一维数组 可以将其视为二维数组的一行
     return 0;
 }
 
@@ -217,4 +218,54 @@ int main()
 //**pz = 2
 //pz[2][1] = 3
 //*(*(pz+2)+1) = 3
+
+
+#include <iostream>
+using namespace std;
+
+#define ROWS 3 //hang
+#define COLS 4 //lie
+
+
+//如何处理二维数组作为函数参数
+void sum_rows(int ar[][COLS],int rows)
+{//void sum_rows(int ar[][COLS], int) and (int(*ar)[],int rows) are both ok
+    int r;
+    int c;
+    int tot;
+    for(r=0;r<rows;r++)
+    {
+        tot = 0;
+        for(c=0;c<COLS;c++)
+        {
+            tot += ar[r][c];
+        }
+        cout << "row " << r << ": sum is " << tot << endl;
+    }
+}
+
+
+
+
+int main()
+{
+
+    int junk[ROWS][COLS] = {
+    {2,4,6,8},
+    {3,5,7,9},
+    {12,10,8,6},
+    };
+
+    sum_rows(junk,ROWS);
+
+    return 0;
+}
+
+
+//row 0: sum is 20
+//row 1: sum is 24
+//row 2: sum is 36
+
+
+
 
