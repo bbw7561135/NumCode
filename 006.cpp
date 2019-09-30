@@ -316,5 +316,43 @@ int main()
 
 
 
+//最本质的办法 动态申请数组
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
+
+
+
+int main()
+{
+
+    double* ptd;
+    int max;
+    int i = 0;
+
+    max = 10;
+    ptd = (double*) malloc(max*sizeof(double));
+    if(ptd==NULL)
+        printf("allocate fails.");
+    else
+        for(i=0;i<max;i++)
+    {
+        ptd[i]=i+2.0;
+    }
+
+    for(i=0;i<max;i++)
+    {
+        printf("%f\n",ptd[i]);
+    }
+    free(ptd);
+    return 0;
+}
+
+
+
+
 
 
