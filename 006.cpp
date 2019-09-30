@@ -245,8 +245,6 @@ void sum_rows(int ar[][COLS],int rows)
 }
 
 
-
-
 int main()
 {
 
@@ -265,6 +263,57 @@ int main()
 //row 0: sum is 20
 //row 1: sum is 24
 //row 2: sum is 36
+
+
+
+
+//处理二维数组时 可以省略第一维的大小 第二维不可少
+//其他多维数组也只能省略第一维 int sum4d(int ar[][10][19][17])
+//处理任意大小的二维数组不太方便 因为不能确定维度大小
+//方法一是把数组作为一维数组传递 然后让函数计算每行的开始
+//方法二是使用C11的变长数组 变长数组不是指能改变数组大小 而是指在创建数组时候可以使用变量指定数组的维度
+//意即可以用变量指定数组维度 但是变长数组有一些限制 比如不能用static或extern修饰 也不能在声明时初始化
+//而且只有C语言支持 C++里面可用指针或者STL里面的vector实现变长数组 参加收藏夹C++变长数组
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
+int sum_2d(int rows, int cols, int ar[rows][cols])
+{//void sum_rows(int ar[][COLS], int) and (int(*ar)[],int rows) are both ok
+    int r;
+    int c;
+    int tot=0;
+    for(r=0;r<rows;r++)
+    for(c=0;c<cols;c++)
+        tot += ar[r][c];
+    return tot;
+}
+
+
+
+
+int main()
+{
+
+    int i,j;
+    int rs=3;
+    int cs=10;
+    int vla[rs][cs];//变长数组VLA
+
+    for(i=0;i<rs;i++)
+    for(j=0;j<cs;j++)
+        vla[i][j]=i*j+j;
+
+    int res=0;
+    res = sum_2d(rs,cs,vla);
+    printf("%d",res);
+    return 0;
+}
+
+
 
 
 
