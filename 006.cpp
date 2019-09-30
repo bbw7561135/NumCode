@@ -353,6 +353,70 @@ int main()
 
 
 
+//结构
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAXTITLE 40
+#define MAXAUTHOR 40
+#define MAXBOOKS 2
+
+
+struct book
+{
+    char title[MAXTITLE];
+    char author[MAXAUTHOR];
+    float value;
+};
+
+struct person
+{
+    struct book own;
+    char names[MAXAUTHOR];
+    float income;
+};
+
+
+int main()
+{
+    //初始化器
+    struct book gift = {
+    .value = 1.26,
+    .author = "Amao",
+    .title = "My  struggling life"
+    };
+    struct book surprise = {
+    .value = 6.66
+    };
+    //   char book[50];
+   //char *author;
+    //  strcpy(book,"amao");
+   //book = "amao";//这样的赋值是错误的。
+   //author = "liucixin";//这样赋值可以
+    struct book library[MAXBOOKS];
+    library[0].value = 5.0;
+    strcpy(library[0].author,"adong");
+    strcpy(library[0].title,"JinPingMei");
+    printf("%f\n",gift.value);//结构成员运算符.
+    printf("%f\n",surprise.value);
+    printf("%f\n",library[0].value);
+    printf("%s\n",library[0].author);
+    printf("%c\n",library[0].author[1]);
+
+    //嵌套结构
+    struct person amao = {
+    .own = {"Ak47","Russia",7.77},
+    .names = "China",
+    .income = 67000
+    };
+    printf("%s\n",amao.names);
+    return 0;
+}
+
+
+
+
 
 
 
