@@ -416,6 +416,43 @@ int main()
 
 
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAXTITLE 40
+#define MAXAUTHOR 40
+#define MAXBOOKS 2
+
+
+struct book
+{
+    char title[MAXTITLE];
+    char author[MAXAUTHOR];
+    float value;
+};
+
+
+
+int main()
+{
+    //初始化器
+    struct book gift = {
+    .value = 1.26,
+    .author = "Amao",
+    .title = "My  struggling life"
+    };
+    struct book * pgift;
+    pgift = &gift;
+    printf("%f\n",pgift->value); //指针用->访问成员变量
+    //pgift->value==gift.value==(*pgift).value
+    //.运算符比*高 所以要圆括号
+    return 0;
+}
+
+
+
+
 
 
 
