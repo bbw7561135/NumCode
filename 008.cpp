@@ -243,3 +243,31 @@ int main()
     return 0;
 }
 //高级队列包括双端队列deuqe和优先队列
+//优先队列只有top元素 最高优先级的都在前面 不管你push什么进来
+//优先队列底层实现是靠堆heap
+
+
+//stack 后进先出
+#include <iostream>
+#include <stack>
+
+using namespace std;
+
+int main()
+{
+
+    stack<int> st;
+    for(int i=0; i<=5; i++)
+    {
+        st.push(i);//入栈 lifo
+    }
+    cout << st.top() << endl;
+    st.pop();
+    cout << st.top() << endl;
+    //也有empty size 等函数
+    //stack用来递归
+    return 0;
+}
+
+//算法头文件 algorithm
+
