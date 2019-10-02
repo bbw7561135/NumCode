@@ -22,10 +22,10 @@ int main()
     {
         cout << *(it+i) << endl;
     }
-    for(int=0;i<vi.size();i++) //vi.size()
+    for(int i=0;i<vi.size();i++) //vi.size()
     {
         cout << vi[i] << endl;
     }
     return 0;
-}
+}i
 
