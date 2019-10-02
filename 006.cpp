@@ -452,6 +452,52 @@ int main()
 
 
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define FUNDLEN 50
+
+
+struct bank
+{
+    char bank[FUNDLEN];//结构中涉及到字符串 用数组比指针好
+    double bankfund;//page459
+    char save[FUNDLEN];
+    double savefund;
+};
+
+double sum(double x, double y)
+{
+    return (x+y);
+}
+
+double sump(const struct bank * count)
+{   //const 表面不会修改count的内容
+    return (count->bankfund+count->savefund);
+    //count是指针 所以要用->间接访问
+}
+
+
+
+
+
+
+int main()
+{
+
+    struct bank amao = {"BOC",1000000.0,"Amao",33333.0};
+    struct bank adong =  {"BOC",1000000.0,"Adong",22222.0};
+    double sum1;
+    sum1 = sum(amao.savefund,adong.savefund);
+    printf("sum is %f \n",sum1);
+    printf("sum in one count is %f \n",sump(&amao));//与数组不同 结构名不是其地址 要用取地址算符
+    return 0;
+}
+
+
+
+
 
 
 
