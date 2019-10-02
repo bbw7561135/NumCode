@@ -29,3 +29,31 @@ int main()
     return 0;
 }i
 
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+int main()
+{
+    vector<int> vi;
+    for(int i=1;i<=3;i++)
+    {
+        vi.push_back(i);
+    }
+
+    vi.pop_back();//delete last element
+
+    for(int i=0;i<vi.size();i++) //vi.size() is unsigned
+    {
+        cout << vi[i] << endl;
+    }
+
+    vi.clear(); //clear all element
+    cout << "size is " << vi.size() << endl;
+
+    return 0;
+}
+
+
