@@ -141,3 +141,70 @@ int main()
 
 
 //string
+
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+
+    string str = "abcde";
+    for(int i=0;i<str.length();i++) //str.length is unsigned
+    { //length()==size()
+        cout << str[i] << endl;
+    }
+    //读入和输出整个字符串用cin和cout
+    //string str1;
+    //cin>>str1;
+    //cout << str1 << endl;
+
+    for(string::iterator it = str.begin(); it != str.end();it++)
+    {
+        cout << *it << endl;
+    }
+
+    string str1 = "fghijk";
+    string str2;
+    str2 = str + str1;
+    cout << str2 << endl;
+    //还可以比较大小 按照字典序列
+
+    //insert(pos,string) insert string at pos
+    str.insert(0,str1);//"XXX" is also ok
+    cout << str << endl;
+    str = "abcde";
+    cout << str << endl;
+    str.insert(str.begin()+1,str1.begin(),str1.end());//aXbcde put str2 into X pos
+    cout << str << endl;//afghijkbcde
+    str.erase(str.begin());//fghijkbcde
+    cout << str << endl;
+    str.erase(str.begin()+1,str.end());//f //[left,right)
+    cout << str << endl;
+    str = "abcde";
+    cout << str << endl;//abced
+    str.erase(1,4);//erase(pos,length) //a 删除从pos开始 长度为length的字符串
+    cout << str << endl;
+    str.clear();// 清空字符串
+    cout << str.length() << endl;
+    str = "abcde";
+    cout << str << endl;//abced
+    cout << str.substr(0,3) << endl;//substr(pos,length) return sub str 从pos开始 长度为length字符子串
+    //str.find(str2) 当str2是子串时 返回其第一次出现的位置 如果不是 返回string::npos
+    //str.find(str2,pos) 从str的pos开始匹配str2 成功返回第一次的位置 如果不是返回string::npos
+    if(str.find("abc") != string::npos)
+    {
+        cout << str.find("abc") << endl;
+    }
+    if(str.find("cde",1) != string::npos)
+    {
+        cout << str.find("cde",1) << endl;
+    }
+    //str.replace(pos,len,str2) 把str从pos开始长度为len的子串替换为str2
+    //str.replace(it1,it2,str2) 把迭代器[it1,it2)范围内的子串替换为str2
+    cout << str.replace(0,1,"z") << endl;//zbcde
+    return 0;
+}
+
