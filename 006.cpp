@@ -462,6 +462,7 @@ int main()
 struct bank
 {
     char bank[FUNDLEN];//结构中涉及到字符串 用数组比指针好
+    //或者搭配malloc和free情况下用指针也可以
     double bankfund;//page459
     char save[FUNDLEN];
     double savefund;
@@ -494,6 +495,7 @@ int main()
     printf("sum in one count is %f \n",sump(&amao));//与数组不同 结构名不是其地址 要用取地址算符
     return 0;
 }
+
 
 
 
