@@ -358,3 +358,7 @@ int main()
     //cout << lowerPos-a << upperPos -a << endl;
     return 0;
 }
+
+
+
+
