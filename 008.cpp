@@ -304,7 +304,7 @@ int main()
     while(next_permutation(vi.begin(),vi.end())); //全排列函数的参数迭代器//next_per(a,a+3) is also ok
     //[left,right)
     //fill(left,right,value)用value去填充left和right直接的区间 仍旧满足[left,right]
-    fill(vi.begin(),vi.end(),126);
+    fill(vi.begin(),vi.end(),126); //fill==memset(arr,val,sizeof(arr))
     for(int i=0;i<vi.size();i++) //vi.size() is unsigned
     {
         cout << vi[i] << endl;
