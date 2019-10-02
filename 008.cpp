@@ -271,3 +271,90 @@ int main()
 
 //算法头文件 algorithm
 
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+
+    //min max swap 等都有
+
+    int a[6] = {10,11,12,13,14,15};
+    reverse(a,a+4);//reverse 10 11 12 13 //also [left,right)
+    for(int i=0; i<6; i++)
+    {
+        cout << a[i] << endl;
+    }
+    string str = "abcde";
+    reverse(str.begin(),str.end());//edcba
+    cout << str << endl;
+    vector<int> vi;
+    for(int i=1; i<=3; i++)
+    {
+        vi.push_back(i);// 1 2 3
+    }
+    do
+    {
+        cout << vi[0] << vi[1] << vi[2] << endl;
+    }
+    while(next_permutation(vi.begin(),vi.end())); //全排列函数的参数迭代器//next_per(a,a+3) is also ok
+    //[left,right)
+    //fill(left,right,value)用value去填充left和right直接的区间 仍旧满足[left,right]
+    fill(vi.begin(),vi.end(),126);
+    for(int i=0;i<vi.size();i++) //vi.size() is unsigned
+    {
+        cout << vi[i] << endl;
+    }
+
+//    int b[5]= {1,32,26,24,567};
+//    sort(b,b+5);//sort all element in b
+//    for(int i=0;i<5;i++)
+//    {
+//        cout << b[i] << endl;
+//    }
+
+    vector<int> b = {1,32,26,24,567};
+    sort(b.begin(),b.end());//sort(left,right) also works as [left,right)
+    //vector string deque can use sort
+    for(int i=0;i<b.size();i++) //vi.size() is unsigned
+    {
+        cout << b[i] << endl;
+    }
+    return 0;
+}
+
+//lower_bound(first,last,val) 和 upper_bound用在已经排序的数组或容器中 找出val
+//在[first,last)区间内第一个满足要求的元素值的位置
+//lower是第一个大于等于val的元素位置
+//upper是第一个大于val的元素位置
+//如果没有满足的元素 返回可插入该元素的指针或迭代器
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+
+    vector<int> vi={1,2,3,4,5,6,7,2,3,4};
+    sort(vi.begin(),vi.end());//需要先排序 后者用于有序数列
+    for(int i=0;i<vi.size();i++) //vi.size() is unsigned
+    {
+        cout << vi[i] << endl;
+    }
+    vector<int>:: iterator lowerPos = lower_bound(vi.begin(),vi.end(),-2);
+    vector<int>:: iterator upperPos = upper_bound(vi.begin(),vi.end(),-2);
+    cout << lowerPos -  vi.begin() << upperPos - vi.begin() << endl;
+    //数组的写法不一样
+    //int a[10] = {1,2,2,3,3,4,5,5,5,5}
+    //int* lowerPos = lower_bound(a,a+10,-1);
+    //int* upperPos = upper_bound(a,a+10,-1);
+    //cout << lowerPos-a << upperPos -a << endl;
+    return 0;
+}
