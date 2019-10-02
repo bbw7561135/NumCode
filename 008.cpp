@@ -208,3 +208,38 @@ int main()
     return 0;
 }
 
+//map映射不太常用 类似字典一样 一一对应
+
+//queue 队列 先进先出
+
+#include <iostream>
+#include <queue>
+
+using namespace std;
+
+int main()
+{
+
+    queue<int> q;
+    for(int i=1; i<=5; i++)
+    {
+        q.push(i);//入队
+    }
+    //queue是先进先出的限制性数据结构 在STL中只能通过front访问队首
+    //使用back访问队尾
+    cout << q.front()<<'\t'<<q.back()<<endl;
+    q.pop();//出队 此时为2 3 4 5
+    cout << q.front() << endl;
+    cout << q.size() << endl;
+    //empty() return true or false
+    if(q.empty()==true)
+    {
+        cout << "empty queue." << endl;
+    }
+    else
+    {
+        cout << "Not empty." << endl;
+    }
+    return 0;
+}
+//高级队列包括双端队列deuqe和优先队列
