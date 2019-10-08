@@ -139,7 +139,8 @@ CVector CVector::operator= (CVector param)
 
         x = param.x;
         y = param.y;
-        return *this;
+        return *this;//this用在这里可以避免使用临时对象
+      //this指的就是调用这个operator=函数的那个实例 比如a=b等价于a(b) 那么a就是this指向的对象
 }
     
 int main () {
