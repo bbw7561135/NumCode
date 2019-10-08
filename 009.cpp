@@ -63,8 +63,8 @@ CVector::CVector (int a, int b)
         y = b;
 }
     
-CVector CVector::operator+ (CVector param)
-{
+CVector CVector::operator+ (CVector param)//这里都是传值 而不是传址 数据大时候有开销 可以使用 CVector& param传引用
+{                                         //如果不修改参数 前面还可以加const限定
         CVector temp;
         temp.x = x + param.x;
         temp.y = y + param.y;
