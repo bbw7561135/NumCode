@@ -26,3 +26,5 @@
 #### 函数名本身也是个指针 引出函数指针及其使用方法
 #### 用new分配动态内存 如果失败 返回NULL指针 失败时最好输出语句提醒  否则容易出现不想要的结果
 #### new和delete搭配使用 注意数组时 delete []arr C中没有new和delete需要用 malloc和free 其他还有calloc和realloc
+#### C中的结构概念在C++中已经被扩展到与类class相同的程度 只是它所有的元素都是公开的
+#### typedef  existing_type new_type_name 为已有的类型给定一个新的名字 特别是与指针有关时候 方便记忆 不容易混淆
