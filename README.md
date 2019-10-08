@@ -15,3 +15,4 @@
 #### 需要用cin来输入字符串时 用cin.getline替代
 #### 字符串转数值除了sstream类 还可以用cstdlib里面的atoi atol atof
 #### 字符串还有cstring里面的strcat strcmp strcpy strlen等
+#### int* p 指针声明时候用的* 表明它是一个指针 与 * p的* (引用操作符)不一样
