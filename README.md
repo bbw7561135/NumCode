@@ -28,3 +28,4 @@
 #### new和delete搭配使用 注意数组时 delete []arr C中没有new和delete需要用 malloc和free 其他还有calloc和realloc
 #### C中的结构概念在C++中已经被扩展到与类class相同的程度 只是它所有的元素都是公开的
 #### typedef  existing_type new_type_name 为已有的类型给定一个新的名字 特别是与指针有关时候 方便记忆 不容易混淆
+#### union与结构的差别是联合中所有的量占同样的一段内存 大小为声明中最长元素的大小 联合常在结构体中出现-匿名联合 可参考书籍 不常用
