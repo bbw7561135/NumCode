@@ -12,3 +12,4 @@
 #### 008.cpp STL复习
 
 #### iostram.h == iostream + using namespace std 但是前者不提倡使用
+#### 需要用cin来输入字符串时 用cin.getline替代
