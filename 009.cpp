@@ -41,6 +41,7 @@
 */
 
 // vectors: overloading operators example
+//简单操作符的重载 特别注意操作符重载a+b的意思等价于a(b) b+a则是b(a)看似结果一样 但原理不同
 #include <iostream>
 using namespace std;
 class CVector 
