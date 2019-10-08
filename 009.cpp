@@ -37,7 +37,7 @@
 #### 声明新实例的时候 如果不传入参数 不要写()括号！！！
 #### 类的指针也使用间接操作符->
 #### 操作符重载 可参考书籍 不常用
-
+#### 关键字this指针通常被用在一个class内部 指正在被执行的该class的实例在内存中的地址 它是一个指针 其值永远是自身实例的地址
 
 */
 
@@ -80,29 +80,3 @@ int main () {
         return 0;
 }
 
-
-
-
-// this
-#include <iostream>
-using namespace std;
-
-class CDummy
-{
-      public:
-        int isitme (CDummy& param);
-};
-
-int CDummy::isitme (CDummy& param)
-{
-        if (&param == this) return 1;
-        else return 0;
-}
-    
-int main () {
-        CDummy a;
-        CDummy* b = &a;
-        if ( b->isitme(a) )
-            cout << "yes, &a is b"<<endl;
-        return 0;
-}
