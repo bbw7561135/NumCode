@@ -91,9 +91,9 @@ class CDummy
         int isitme (CDummy& param);
 };
 
-int CDummy::isitme (CDummy& param)
+int CDummy::isitme (CDummy& param) //这里的&表示param是CDummy的引用
 {
-        if (&param == this) return 1;
+        if (&param == this) return 1;//这里的param是取地址
         else return 0;
 }
     
