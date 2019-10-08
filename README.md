@@ -13,3 +13,5 @@
 
 #### iostram.h == iostream + using namespace std 但是前者不提倡使用
 #### 需要用cin来输入字符串时 用cin.getline替代
+#### 字符串转数值除了sstream类 还可以用cstdlib里面的atoi atol atof
+#### 字符串还有cstring里面的strcat strcmp strcpy strlen等
