@@ -48,8 +48,10 @@ class CVector
 {
       public:
         int x,y;
-        CVector () {};
-        CVector (int,int);
+        CVector () {}; //空构造函数不能少 否则CVector c将会报错！
+        CVector (int,int);//拷贝构造函数
+      //上述两个构造函数都是我们认为给出 覆盖默认的构造函数
+      //但是如果只定义CVector (int,int) 默认空构造函数也不起效 所以要自己定义构造函数 两个都要定义
         CVector operator + (CVector);
 };//delimeter
     
