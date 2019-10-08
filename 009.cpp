@@ -50,6 +50,7 @@ class CVector
       public:
         int x,y;
         CVector () {}; //空构造函数不能少 否则CVector c将会报错！
+      //但空语句块不好 CVector () {x=0;y=0;}更合理 注意y=0后面也有分号
         CVector (int,int);//拷贝构造函数
       //上述两个构造函数都是我们人为给出 覆盖默认的空构造函数和拷贝函数
       //但是如果只定义CVector (int,int) 默认空构造函数也不起效 也就是不会用系统默认的 所以要自己定义构造函数 两个都要定义
