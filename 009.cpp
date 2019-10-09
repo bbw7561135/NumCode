@@ -552,7 +552,7 @@ int main ()
 }
 
 //利用基类指针可以指向不同子类 我们可以写一个基类成员函数 让它可以将函数area结果打到屏幕上 而不用考虑是哪个子类
-
+//需要结合this指针 
 #include <iostream>
 using namespace std;
 
@@ -568,7 +568,7 @@ class CPolygon
         virtual int area (void) =0;
         void printarea (void)
         {
-            cout << this->area() << endl; //this指针指向正在被执行的对象本身的area函数
+            cout << this->area() << endl; //this指针指向正在被执行的实例本身的area函数
         }
 
 };
@@ -598,6 +598,41 @@ int main ()
     ppoly2->printarea();
     return 0;
 }
+
+//抽象类和虚拟成员赋予了C++多态的特征 使得oop成为有用的工具
+
+
+//函数模板 可以参考书籍 不常用
+
+//同理还有类模板
+
+//命名空间的概念 可以参考书籍
+
+//exception的处理语句 try throw catch 帮你定位bug的地方 找出错误 可以参考书籍
+
+//预处理指令 包括#define #undef #ifdef #ifndef #if #endif #else #elif
+// #ifdef XXX
+// code here
+// #endif
+//处理多文件时防止重复定义
+// #ifndef XXX
+// #define XXX
+// #endif
+
+// #if MAX>200
+// #undef MAX
+// #define MAX 200
+// #elif MAX < 50
+// #undef MAX
+// #define MAX 50
+// #else
+// #undef MAX
+// #define MAX 100
+// #endif
+
+//文件操作 fstream ifstream ofstream
+//文件的操作可以参考书籍 用到时候翻阅
+//打开 写入 异常处理 关闭文件等操作 相关的函数很多
 
 
 
