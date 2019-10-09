@@ -164,20 +164,26 @@ using namespace std;
 class CDummy
 {
       public:
-        static int n;
-        CDummy () { n++; };
+        static int n; //静态成员与全局变量享有相同属性 但它额外有类的范围 ANSI-C++标准为了防止它被重复声明
+        CDummy () { n++; };//规定在类声明中只能够包含静态成员的原型声明 不能包括其定义
         ~CDummy () { n--; };
 };
 
-int CDummy::n=0;
-
+int CDummy::n=0;//静态成员定义要放在这里 全局范围内 它本质上是个全局变量 只是它额外有类的属性
 int main ()
 {
         CDummy a; //n=1
         CDummy b[5];//n=6
         CDummy * c = new CDummy;//n=7
-        cout << a.n << endl;//n=7
-        delete c;//n=6
-        cout << CDummy::n << endl;
+        cout << a.n << endl;//n=7 作为实例的数据来引用n
+        delete c;//n=6 
+        cout << CDummy::n << endl;//作为类的数据成员直接引用
         return 0;
 }
+
+//有静态数据成员就有静态函数成员
+//静态函数成员也是全局函数 调用方式和类的函数成员一样
+//但是只能够引用静态数据 不能用非静态成员 也不能够用this指针 因为this指针实际上用了一个实例指针
+//而静态函数不是任何实例的成员 它只属于类 是类的直接成员
+
+
