@@ -440,14 +440,19 @@ int main ()
 {
     CRectangle rect;
     CTriangle trgl;
-    CPolygon * ppoly1 = &rect;
-    CPolygon * ppoly2 = &trgl;
-    ppoly1->set_values (4,5);
-    ppoly2->set_values (4,5);
+    CPolygon * ppoly1 = &rect; //子类地址赋给基类指针
+    CPolygon * ppoly2 = &trgl; //两者是兼容的 但是因为指针是指向基类的 所以我们只能引用CR和CT中从基类中继承的成员
+    ppoly1->set_values (4,5); //意思就是可以用p1和p2调用setvalues 因为是基类继承来了
+    ppoly2->set_values (4,5);//但是不能用p1p2调用area 因为那不是继承来的
     cout << rect.area() << endl;
     cout << trgl.area() << endl;
     return 0;
 }
+
+
+//接上述 如果想用p1p2 也就是基类指针承认area 必须在基类中声明它 而不能只在子类中进行声明
+//但是我们area本身与子类有关 三角形 矩形的area计算方式不同 也就是我们希望在基类中声明一个area 以便被基类指针访问
+//同时其具体定义留待子类中进行细化 我们可以加关键字virtual 也就是 虚拟成员函数
 
 
 
