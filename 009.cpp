@@ -305,7 +305,11 @@ int main ()
 //子类成员 yes    yes    no
 //非成员   yes    no     no
 
-
+//CR和CT继承的成员与基类拥有相同的访问权限 比如基类中的width是protected 那么CR和CT中也是protected 原因是我们是用公有继承public
+//class 子类：public 基类 这里的public即是表示共有继承 pub表示子类从基类所继承的成员必须获得最低程度保护 也就是上面那个表所列的子类访问权限
+//最低程度保护除了pub外 还可以用pro和pri
+//class 子类：protected 基类 这会使得protected成为子类从基类继承成员的最低访问限制 也就是原来基类中的public成员到基类都变成protected成员
+//当然 这些只对继承而来的成员有效 子类依旧可以定义自己的pub pri pro成员
 
 
 
