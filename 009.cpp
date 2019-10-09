@@ -219,7 +219,11 @@ int main ()
         CRectangle rect, rectb;
         rect.set_values (2,3);
         rectb = duplicate (rect);
-        cout << rectb.area()<<endl;
+        cout << rectb.area()<<endl;//在duplicate声明和调用时候 并没有把其当作class CR的成员 它不是 它只是友元函数
         return 0;
 }
+
+//友元函数可以实现两个不同类之间的操作 本质上它不是面向对象编程方法 如果可能 尽量使用类的成员函数完成操作
+//友元类 A的友元类B B能够访问A的私有成员 类似友元函数
+
 
