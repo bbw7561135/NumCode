@@ -188,3 +188,38 @@ int main ()
 
 
 //友元函数
+#include <iostream>
+using namespace std;
+
+class CRectangle
+{
+        int width, height;
+      public:
+        void set_values (int, int);
+        int area (void) {return (width * height);}
+        friend CRectangle duplicate (CRectangle);//虽然在类里面声明但不是类的成员可以从下面的定义中看出来
+};
+    
+void CRectangle::set_values (int a, int b)
+{
+        width = a;
+        height = b;
+}
+    
+CRectangle duplicate (CRectangle rectparam)
+{
+        CRectangle rectres;
+        rectres.width = rectparam.width*2;//have access to rect privared width
+        rectres.height = rectparam.height*2;//because of friendship
+        return (rectres); //返回的是一个CR类的对象 而不是通常的单个数据
+}
+
+int main ()
+{
+        CRectangle rect, rectb;
+        rect.set_values (2,3);
+        rectb = duplicate (rect);
+        cout << rectb.area()<<endl;
+        return 0;
+}
+
