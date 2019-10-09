@@ -510,6 +510,54 @@ int main ()
 //因为纯虚函数还没有被实现 所以不可能生成一个不包含所有成员定义的实例 所以 A inst不可以
 //但是这个函数在子类中被完整定义了 所以生成一个指向其子类实例的指针是完全合法的 因为子类指针和基类指针是兼容的 所以 A* inst可行
 //
+#include <iostream>
+using namespace std;
+
+class CPolygon
+{
+    protected:
+        int width, height;
+    public:
+        void set_values (int a, int b) {
+            width=a;
+            height=b;
+        }
+        virtual int area (void) =0;
+};
+
+class CRectangle: public CPolygon
+{
+    public:
+        int area (void) { return (width * height); }
+};
+
+class CTriangle: public CPolygon {
+    public:
+        int area (void) {
+            return (width * height / 2);
+        }
+};
+
+int main ()
+{
+    CRectangle rect;
+    CTriangle trgl;
+    CPolygon * ppoly1 = &rect;
+    CPolygon * ppoly2 = &trgl;
+    ppoly1->set_values (4,5);
+    ppoly2->set_values (4,5);
+    cout << ppoly1->area() << endl;
+    cout << ppoly2->area() << endl;
+    return 0;
+}
+
+
+
+
+
+
+
+
 
 
 
