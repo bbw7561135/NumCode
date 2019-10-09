@@ -339,14 +339,14 @@ class daughter : public mother
 class son : public mother
 {
       public:
-        son (int a) : mother (a)
+        son (int a) : mother (a) //指定调用母亲类中带参数的构造函数
           { cout << "son: int parameter\n\n"; }
 };
 
 int main ()
 {
-        daughter cynthia (1);
-        son daniel(1);
+        daughter cynthia (1); //女儿类新实例生成时 母亲类的默认构造函数被调用 就是没有参数那个
+        son daniel(1); //但是儿子类新实例生成时 母亲类是带参数的构造函数被调用 因为儿子类在定义中指定了
         return 0;
 }
 
