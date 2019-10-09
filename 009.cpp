@@ -277,7 +277,7 @@ class CPolygon
         void set_values (int a, int b) { width=a; height=b;}
 };
 
-class CRectangle: public CPolygon
+class CRectangle: public CPolygon //公有继承 也可以改为protected或privtae
 {
         public:
         int area (void){ return (width * height); } //不同边形面积计算不一致
@@ -295,11 +295,15 @@ int main ()
         CTriangle trgl;
         rect.set_values (4,5);
         trgl.set_values (4,5);
-        cout << rect.area() << endl;
-        cout << trgl.area() << endl;
-        return 0;
+        cout << rect.area() << endl;//类CR和CT都包含CP的成员width height和set_values()
+        cout << trgl.area() << endl;//标识符protected和private的区别在继承时体现
+        return 0;//基类的protected成员可以被子类的其他成员所使用 但基类的private成员就不行 所以CP中的width和height声明为protected
 }
 
+//访问权限 pub    pro    pri
+//本类成员 yes    yes    yes
+//子类成员 yes    yes    no
+//非成员   yes    no     no
 
 
 
