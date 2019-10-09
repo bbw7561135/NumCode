@@ -546,11 +546,12 @@ int main ()
     CPolygon * ppoly2 = &trgl;
     ppoly1->set_values (4,5);
     ppoly2->set_values (4,5);
-    cout << ppoly1->area() << endl;
+    cout << ppoly1->area() << endl; //同样类型的指针（cp*）却可以指向不同子类的实例 这一点很有用
     cout << ppoly2->area() << endl;
     return 0;
 }
 
+//利用基类指针可以指向不同子类 我们可以写一个基类成员函数 让它可以将函数area结果打到屏幕上 而不用考虑是哪个子类
 
 
 
