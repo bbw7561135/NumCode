@@ -155,3 +155,29 @@ int main () {
         cout << d.x << "," << d.y << endl;
         return 0;
 }
+
+
+// this
+#include <iostream>
+using namespace std;
+
+class CDummy
+{
+      public:
+        static int n;
+        CDummy () { n++; };
+        ~CDummy () { n--; };
+};
+
+int CDummy::n=0;
+
+int main ()
+{
+        CDummy a; //n=1
+        CDummy b[5];//n=6
+        CDummy * c = new CDummy;//n=7
+        cout << a.n << endl;//n=7
+        delete c;//n=6
+        cout << CDummy::n << endl;
+        return 0;
+}
