@@ -352,7 +352,7 @@ int main ()
 
 
 
-//
+//多重继承
 #include <iostream>
 using namespace std;
 
@@ -404,6 +404,8 @@ int main ()
 
 
 
+//多态
+//继承的好处之一是一个指向子类的指针与一个指向基类的指针是兼容的
 
 
 
