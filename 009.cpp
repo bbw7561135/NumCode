@@ -127,7 +127,7 @@ CVector::CVector (int a, int b)
         y = b;
 }
     
-CVector CVector::operator+ (CVector param)
+CVector CVector::operator+ (CVector param) //也可以用类外的全局函数来重载操作符 但此时无法访问类的私有成员 除非是友元
 {
         CVector temp;
         temp.x = x + param.x;
