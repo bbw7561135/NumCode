@@ -466,7 +466,7 @@ class CPolygon
             width=a;
             height=b;
         }
-        virtual int area (void) { return (0); }
+        virtual int area (void) { return (0); } 
 };
 
 class CRectangle: public CPolygon
@@ -494,10 +494,22 @@ int main ()
     ppoly3->set_values (4,5);
     cout << ppoly1->area() << endl;
     cout << ppoly2->area() << endl;
-    cout << ppoly3->area() << endl;
+    cout << ppoly3->area() << endl; //若基类中没有vitrual声明 都将调用基类的area函数
+//关键字virtual的作用就是使用基类指针时候 子类中与基类同名的成员函数 会调用相应子类中的同名函数 而不是基类
+//虽然area在基类中被定义为virtual 但是基类实例仍可以自由调用area
     return 0;
 }
 
+
+//抽象基类
+//基本的抽象类和上述的CP很像 区别在于之前的CP我们已经为类的实例定义了一个area函数 而在抽象类中 可以不定义 简单地在函数声明后面写=0即可
+//即 virtual int area（void）=0 而之前是virtual int area (void) { return (0); } 
+//类似 virtual int area（void）=0称为纯虚函数 包含纯虚函数的类称为抽象基类
+//抽象基类最大的特点是不能有实例 但可以定义指向它的指针
+//所以假定A是抽象基类 那么 A inst就是非法 而 A* instp 是可以的
+//因为纯虚函数还没有被实现 所以不可能生成一个不包含所有成员定义的实例
+//但是这个函数在子类中被完整定义了 所以生成一个指向其子类实例的指针是完全合法的 因为子类指针和基类指针是兼容的 所以 A* inst可行
+//
 
 
 
