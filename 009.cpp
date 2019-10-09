@@ -266,5 +266,43 @@ int main ()
 
 //继承是类的重要特征 继承能狗基于一个类（基类）生成另一个类（子类） 继承某些成员函数 同时加上自己专属的成员
 //
+#include <iostream>
+using namespace std;
+
+class CPolygon
+{
+      protected://protected 子类可以访问 private友元可以访问
+        int width, height;
+      public:
+        void set_values (int a, int b) { width=a; height=b;}
+};
+
+class CRectangle: public CPolygon
+{
+        public:
+        int area (void){ return (width * height); } //不同边形面积计算不一致
+};
+
+class CTriangle: public CPolygon
+{
+      public:
+        int area (void){ return (width * height / 2); }
+};
+
+int main ()
+{
+        CRectangle rect;
+        CTriangle trgl;
+        rect.set_values (4,5);
+        trgl.set_values (4,5);
+        cout << rect.area() << endl;
+        cout << trgl.area() << endl;
+        return 0;
+}
+
+
+
+
+
 
 
