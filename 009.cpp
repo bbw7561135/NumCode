@@ -225,5 +225,44 @@ int main ()
 
 //友元函数可以实现两个不同类之间的操作 本质上它不是面向对象编程方法 如果可能 尽量使用类的成员函数完成操作
 //友元类 A的友元类B B能够访问A的私有成员 类似友元函数
+#include <iostream>
+using namespace std;
+
+class CSquare; //这里需要一个空声明 因为CR里面引CS 如果没有声明就不对
+
+class CRectangle
+{
+        int width, height;
+      public:
+        int area (void) {return (width * height);}
+        void convert (CSquare a);
+};
+
+class CSquare
+{
+      private:
+        int side;
+      public:
+        void set_side (int a){side=a;}
+        friend class CRectangle; //谁定义谁开放自己 这里CSquare定义友元 那么就开放自己让CR访问
+};
+    
+void CRectangle::convert (CSquare a)
+{
+        width = a.side;
+        height = a.side;
+}
+
+int main ()
+{
+        CSquare sqr;
+        CRectangle rect;
+        sqr.set_side(4);
+        rect.convert(sqr);
+        cout << rect.area()<<endl;
+        return 0;
+}
+
+
 
 
