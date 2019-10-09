@@ -317,4 +317,42 @@ int main ()
 //如果基类没有默认构造函数（也就是你自己定义了构造函数） 当子类新实例生成时候 你希望基类某个重载的构造函数被调用 你需要在子类的每一个构造函数
 //的定义中指定它
 
+#include <iostream>
+using namespace std;
+
+class mother
+{
+      public:
+        mother ()
+          { cout << "mother: no parameters\n"; }
+        mother (int a)
+          { cout << "mother: int parameter\n"; }
+};
+
+class daughter : public mother
+{
+      public:
+        daughter (int a)
+          { cout << "daughter: int parameter\n\n"; }
+};
+
+class son : public mother
+{
+      public:
+        son (int a) : mother (a)
+          { cout << "son: int parameter\n\n"; }
+};
+
+int main ()
+{
+        daughter cynthia (1);
+        son daniel(1);
+        return 0;
+}
+
+
+
+
+
+
 
