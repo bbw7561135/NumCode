@@ -228,7 +228,7 @@ int main ()
 #include <iostream>
 using namespace std;
 
-class CSquare; //这里需要一个空声明 因为CR里面引CS 如果没有声明就不对
+class CSquare; //这里需要一个空声明 因为CR里面引CS 如果没有声明就不对 或者把CS的声明提到CR前面 跟函数的规则一样
 
 class CRectangle
 {
@@ -244,7 +244,8 @@ class CSquare
         int side;
       public:
         void set_side (int a){side=a;}
-        friend class CRectangle; //谁定义谁开放自己 这里CSquare定义友元 那么就开放自己让CR访问
+        friend class CRectangle; //谁定义谁开放自己 这里CSquare定义友元 那么就开放自己让CR访问 但不是相互的 这里仅代表CS对CR开放
+      //如果要CR对CS开放 需要在CR里面声明友元类CS
 };
     
 void CRectangle::convert (CSquare a)
@@ -263,6 +264,7 @@ int main ()
         return 0;
 }
 
-
+//继承是类的重要特征 继承能狗基于一个类（基类）生成另一个类（子类） 继承某些成员函数 同时加上自己专属的成员
+//
 
 
