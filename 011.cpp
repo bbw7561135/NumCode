@@ -193,3 +193,30 @@ int main()
     cout << x << '\t' << y << '\t' << z << endl;
     return 0;
 }
+
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+//题目：输出9*9口诀
+//程序分析：分行与列考虑，共9行9列，i控制行，j控制列
+
+
+int main()
+{
+    int i;
+    int j;
+    int result;
+    for(i=1;i<10;i++)
+    {
+        for(j=1;j<10;j++)
+        {
+            result = i*j;
+            cout << i <<"*" << j << "=" << result << '\t';
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
