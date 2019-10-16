@@ -509,6 +509,40 @@ int main()
 }
 
 
+include <iostream>
+#include <cmath>
+using namespace std;
+
+//题目：两个乒乓球队进行比赛，各出三人。甲队为a,b,c三人，乙队为x,y,z三人。已抽签决定 比赛名单
+//有人向队员打听比赛的名单。a说他不和x比，c说他不和x,z比，请编程序找出 三队赛手的名单
+
+
+
+
+
+int main()
+{
+    char i;//i vs a
+    char j;//j vs b
+    char k;//k vs c
+
+    for(i='x';i<='z';i++)
+    for(j='x';j<='z';j++)
+    for(k='x';k<='z';k++)
+    {
+        if(i!=j && i!=k && j!=k)
+        {
+            if(i!='x' && k=='y')
+            {
+                cout << i << "vs a" << endl;
+                cout << j << "vs b" << endl;
+                cout << k << "vs c" << endl;
+            }
+        }
+    }
+
+    return 0;
+}
 
 
 
