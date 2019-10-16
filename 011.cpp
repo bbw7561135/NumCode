@@ -247,3 +247,43 @@ int main()
     return 0;
 }
 
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+//题目：判断101-200之间有多少个素数，并输出所有素数 
+//程序分析：判断素数的方法：用一个数分别去除2到sqrt(这个数)，如果能被整除， 
+//则表明此数不是素数，反之是素数
+
+
+
+int main()
+{
+    int m;
+    int i;
+    int k;
+    int h=0;
+    int leap=1;
+
+    for(m=101;m<=200;m++)
+    {
+        k=sqrt(m+1);//jieduan
+        for(i=2;i<=k;i++)
+        {
+            if(m%i==0)
+                {
+                    leap=0;//no su shu
+                    break;//jump inner loop
+                }
+        }
+        if(leap)
+            {
+                cout << m << endl;
+                h++;
+            }
+        leap=1;
+    }
+    cout << "101-200 has " << h << " sushu" << endl;
+    return 0;
+}
