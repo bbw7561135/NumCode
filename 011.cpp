@@ -546,6 +546,37 @@ int main()
 
 
 
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+//题目：有一分数序列：2/1，3/2，5/3，8/5，13/8，21/13...求出这个数列的前20项之和
+//程序分析：请抓住分子与分母的变化规律
+
+
+
+
+
+int main()
+{
+    int n;
+    int t;
+    int num=20;
+    double a=2.0;
+    double b=1.0;
+    double s=0.0;
+
+    for(n=1;n<=num;n++)
+    {
+        s=s+a/b;
+        t=a;
+        a=a+b;
+        b=t;
+    }
+
+    cout << "sum is" << s << endl;
+    return 0;
+}
 
 
 
