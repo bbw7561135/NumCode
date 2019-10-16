@@ -607,7 +607,42 @@ int main()
 }
 
 
+#include <iostream>
+#include <cmath>
+using namespace std;
 
+//题目：利用递归方法求5!
+
+int fact(int k)
+{
+    int sum;
+    if(k==1)
+    {
+        sum=1;
+    }
+    else
+    {
+        sum=k*fact(k-1);
+    }
+    return sum;
+
+}
+
+
+
+int main()
+{
+
+    int n;
+
+
+    for(n=1;n<=5;n++)
+    {
+        cout << n << '\t' << fact(n) << endl;
+    }
+
+    return 0;
+}
 
 
 
