@@ -579,7 +579,32 @@ int main()
 }
 
 
+#include <iostream>
+#include <cmath>
+using namespace std;
 
+//题目：求1+2!+3!+...+20!的和 
+
+
+
+
+
+int main()
+{
+
+    int n;
+    double s=0.0;
+    double t=1.0;
+
+    for(n=1;n<=20;n++)
+    {
+        t=t*n;
+        s=s+t;
+    }
+
+    cout << "sum is" << s << endl;
+    return 0;
+}
 
 
 
