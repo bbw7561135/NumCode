@@ -320,3 +320,41 @@ int main()
 
     return 0;
 }
+
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+//题目：将一个正整数分解质因数。例如：输入90,打印出90=2*3*3*5
+//程序分析：对n进行分解质因数，应先找到一个最小的质数k，然后按下述步骤完成：
+//如果这个质数k恰等于n，则说明分解质因数的过程已经结束，打印出即可。
+//如果n!=k，但n能被k整除，则应打印出k的值，并用n除以k的商,作为新的正整数你n, 重复执行第一步。
+
+
+int main()
+{
+    int n;
+    int i;
+    cout << "input a num: " << endl;
+    cin >> n;
+    cout << n << "= ";
+    for(i=2;i<=n;i++)
+    {
+        while(i!=n)
+        {
+            if(n%i==0)
+                {
+                    cout << i << "*";
+                    n=n/i;
+                }
+            else
+            {
+                break;
+            }
+        }
+    }
+    cout << n << endl;
+    return 0;
+}
+
