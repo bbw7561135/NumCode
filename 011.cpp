@@ -358,3 +358,46 @@ int main()
     return 0;
 }
 
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+//题目：输入两个正整数m和n，求其最大公约数和最小公倍数
+//程序分析：利用辗除法
+
+
+int main()
+{
+    int a;
+    int b;
+    int num1;
+    int num2;
+    int temp;
+
+    cout << "input num1:" << endl;
+    cin >> num1;
+    cout << "input num2:" << endl;
+    cin >> num2;
+
+    if(num1<num2)
+    {
+        temp=num1;
+        num1=num2;
+        num2=temp;
+    }
+
+    a=num1;
+    b=num2;
+
+    while(b!=0) //利用辗除法，直到b为0为止
+    {
+        temp = a%b;
+        a=b;
+        b=temp;
+    }
+
+    cout << "max gongyueshu " << a << endl;
+    cout << "min gongbeishu " << num1*num2/a << endl;
+    return 0;
+}
