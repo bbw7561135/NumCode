@@ -287,3 +287,36 @@ int main()
     cout << "101-200 has " << h << " sushu" << endl;
     return 0;
 }
+
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+//题目：打印出<1000所有的“水仙花数”，所谓“水仙花数”是指一个三位数，其各位数字立方和等于该数
+//本身。例如：153是一个“水仙花数”，因为153=1的三次方＋5的三次方＋3的三次方。
+//程序分析：利用for循环控制100-999个数，每个数分解出个位，十位，百位。
+
+
+
+int main()
+{
+    int i;
+    int j;
+    int k;
+    int n;
+
+    cout << "water flower number is: " << endl;
+    for(n=100;n<=999;n++)
+    {
+        i = n/100; //baiwei
+        j = (n/10)%10;//shiwei
+        k = n%10;//gewei
+        if(n==i*i*i+j*j*j+k*k*k)
+        {
+            cout << n << endl;
+        }
+    }
+
+    return 0;
+}
