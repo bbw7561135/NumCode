@@ -401,3 +401,49 @@ int main()
     cout << "min gongbeishu " << num1*num2/a << endl;
     return 0;
 }
+
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+//题目：一个数如果恰好等于它的因子之和，这个数就称为“完数”。例如6=1＋2＋3.编程 
+//找出1000以内的所有完数
+
+
+
+int main()
+{
+    static int k[10];
+    int i;
+    int j;
+    int n;
+    int s;
+
+    for(j=2;j<1000;j++)
+    {
+        n=-1;
+        s=j;
+        for(i=1;i<j/2+1;i++)
+        {
+            if((j%i)==0)
+            {
+                n++;
+                s=s-i;
+                k[n]=i;
+            }
+        }
+        if(s==0)
+        {
+            cout << j << "is a wanshu." << endl;
+            cout << j << "=";
+            for(i=0;i<n;i++)
+            {
+                cout << k[i] << "+" ;
+            }
+            cout << k[n] << endl;
+        }
+    }
+
+    return 0;
+}
