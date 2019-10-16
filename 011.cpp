@@ -354,7 +354,7 @@ int main()
             }
         }
     }
-    cout << n << endl;
+    cout << n << endl;//跳出循环后i==n 是最后一个因数 一定要输出
     return 0;
 }
 
