@@ -740,7 +740,64 @@ int main()
 
 
 
+#include<iostream>
+#include<cmath>
+using namespace std;
 
+
+int main()
+{
+    int select;
+    double sum=0.0;
+    double average=0.0;
+    int i;
+    int j;
+    int score[2][2];
+    for(i=0;i<2;i++)
+        for(j=0;j<2;j++)
+        {
+            score[i][j] = 90 + i + j;
+        }
+
+    do
+    {
+        cout << "this program has 2 use." << endl;
+        cout << "1.use num to get scores." << endl;
+        cout << "2.use num to get average score." << endl;
+        cout << "0.quit." << endl;
+        cout << "enter 0-2: ";
+        cin >> select;
+
+        switch(select)
+        {
+            case 0:
+                    cout << "see you." << endl;
+                    exit(0);
+                    break;
+            case 1:
+                    cout << "enter student num(0 or 1): " ;
+                    cin >> i;
+                    for(j=0;j<2;j++)
+                    {
+                        cout << j+1 << "th course: " << score[i][j] << endl;
+                    }
+            case 2:
+                    cout << "enter student num(0 or 1): " ;
+                    cin >> i;
+                    sum=0.0;
+                    for(j=0;j<2;j++)
+                    {
+                        sum+=score[i][j];
+                    }
+                    average = sum/2.0;
+                    cout << "average score: " << average << endl;
+            default:
+                    break;
+        }
+    }while(1);
+
+    return 0;
+}
 
 
 
