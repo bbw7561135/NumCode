@@ -711,7 +711,32 @@ int main()
 //而且是针对每个二进制位的操作
 
 
+#include<iostream>
+#include<cmath>
+using namespace std;
 
+
+int main()
+{
+    int a=2;
+    int b=4;
+    int c=6;
+    int d=8;
+    unsigned char result;
+
+    result = a & c; //2
+    cout << result << endl;
+
+    result = b | d;//12
+    cout << result << endl;
+
+    result = a ^ d;//10
+    cout << result << endl;
+
+    result = ~a;//253
+    cout << result << endl;
+    return 0;
+}
 
 
 
