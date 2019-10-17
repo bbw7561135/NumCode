@@ -647,6 +647,56 @@ int main()
 
 
 
+#include<iostream>
+#include<cmath>
+using namespace std;
+
+//给一个不多于5位的正整数，要求：一、求它是几位数，二、逆序打印出各位数字
+
+int main()
+{
+    int a;
+    int b;
+    int c;
+    int d;
+    int e;
+    int x;
+
+    cout << "input num: " << endl;
+    cin >> x;
+
+    a=x/10000; //wanwei
+    b=x%10000/1000;//qianwei
+    c=x%1000/100;//baiwei
+    d=x%100/10;//shiwei
+    e=x%10;//gewei
+    if(a!=0)
+    {
+        cout << "5th num: " << e << d << c << b << a << endl;
+    }
+    else if(b!=0)
+    {
+        cout << "4th num: " << e << d << c << b << endl;
+    }
+    else if(c!=0)
+    {
+        cout << "3th num: " << e << d << c << endl;
+    }
+    else if(d!=0)
+    {
+        cout << "2th num: " << e << d << endl;
+    }
+    else
+    {
+        cout << "1th num: " << e << endl;
+    }
+
+    return 0;
+}
+
+
+
+
 
 
 
